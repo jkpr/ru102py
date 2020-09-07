@@ -17,4 +17,5 @@ class MeterReadingDaoRedis(MeterReadingDaoBase, RedisDaoBase):
         FeedDaoRedis(self.redis, self.key_schema).insert(meter_reading, **kwargs)
 
         # Uncomment for Challenge #3
-        # SiteStatsDaoRedis(self.redis, self.key_schema).update(meter_reading, **kwargs)
+        from redisolar.dao.redis import SiteStatsDaoRedis
+        SiteStatsDaoRedis(self.redis, self.key_schema).update(meter_reading, **kwargs)
