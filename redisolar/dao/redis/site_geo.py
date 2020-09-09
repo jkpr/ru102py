@@ -97,7 +97,7 @@ class SiteGeoDaoRedis(SiteGeoDaoBase, RedisDaoBase):
         """Find all Sites."""
         site_ids = self.redis.zrange(self.key_schema.site_geo_key(), 0, -1)
         sites = set()
-        pipeline = self.redis.pipeline()
+        pipeline = self.redis.pipeline(transaction=False)
         for site_id in site_ids:
             key = self.key_schema.site_hash_key(site_id)
             pipeline.hgetall(key)
