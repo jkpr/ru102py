@@ -5,9 +5,6 @@ from redisolar.dao.redis.feed import FeedDaoRedis
 from redisolar.dao.redis.metric import MetricDaoRedis
 from redisolar.models import MeterReading
 
-# Uncomment for Challenge #3
-# from redisolar.dao.redis import SiteStatsDaoRedis
-
 
 class MeterReadingDaoRedis(MeterReadingDaoBase, RedisDaoBase):
     """MeterReadingDaoRedis persists MeterReading models to Redis."""
@@ -17,5 +14,5 @@ class MeterReadingDaoRedis(MeterReadingDaoBase, RedisDaoBase):
         FeedDaoRedis(self.redis, self.key_schema).insert(meter_reading, **kwargs)
 
         # Uncomment for Challenge #3
-        from redisolar.dao.redis import SiteStatsDaoRedis
+        from redisolar.dao.redis import SiteStatsDaoRedis  # pylint: disable=import-outside-toplevel
         SiteStatsDaoRedis(self.redis, self.key_schema).update(meter_reading, **kwargs)

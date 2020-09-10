@@ -6,7 +6,7 @@ from progress.bar import Bar
 from flask import current_app
 
 from redisolar.core import get_redis_connection
-from redisolar.core import SampleDataGenerator  # pylint: disable=unused-import
+from redisolar.core import SampleDataGenerator
 from redisolar.dao.redis import SiteDaoRedis
 from redisolar.dao.redis import SiteGeoDaoRedis
 from redisolar.schema import FlatSiteSchema

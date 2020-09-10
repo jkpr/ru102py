@@ -1,5 +1,3 @@
-from typing import Dict
-from typing import List
 from typing import Set
 
 from redisolar.dao.base import SiteGeoDaoBase
@@ -73,9 +71,7 @@ class SiteGeoDaoRedis(SiteGeoDaoBase, RedisDaoBase):
         for site_id in site_ids:
             p.zscore(capacity_ranking_key, site_id)
         result = p.execute()
-        scores = {
-            site_id: capacity for site_id, capacity in zip(site_ids, result)
-        }
+        scores = dict(zip(site_ids, result))
         # END Challenge #5
 
         # Delete the next lines after you've populated a `site_ids`
